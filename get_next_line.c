@@ -6,7 +6,7 @@
 /*   By: elichan < elichan@student.42.fr >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 11:52:03 by elichan           #+#    #+#             */
-/*   Updated: 2023/12/21 13:26:24 by elichan          ###   ########.fr       */
+/*   Updated: 2023/12/29 12:46:51 by elichan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*get_line(char *store)
 	line = malloc(sizeof(char) * (ft_line_len(store) + 2));
 	if (!line)
 		return (NULL);
-	str_cpy(line, store)
+	str_cpy(line, store);
 	return (line);
 }
 
@@ -45,9 +45,67 @@ char	*read_and_join(int fd, char *store)
 			return (NULL);
 		}
 		buff[reading_idx] = '\0';
-		store = ft_sjoin(store, buff);
+		store = ft_strjoin(store, buff);
 	}
 	free (buff);
 	return (store);
 }
 
+char	*free_stash(char *store)
+{
+	int		i;
+	int		j;
+	char	*new_stash;
+
+	i = 0;
+	while (store[i] && store[i] != '\n')
+		i++;
+	if (!store[i])
+	{
+		free(store);
+		return (NULL);
+	}
+	new_stash = malloc(sizeof(char) * (ft_strlen(store) - i + 1));
+	if (!new_stash)
+		return (NULL);
+	i++;
+	j = 0;
+	while (store[i])
+	{
+		new_stash[j++] = store[i++];
+		new_stash[j] = '\0';
+		free(store);
+	}
+	return (new_stash);
+}
+
+char	*get_next_line(int fd)
+{
+	char		*line;
+	static char	*store;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	store = read_and_join(fd, store);
+	if (!store)
+		return (NULL);
+	line = get_line(store);
+	store = free_stash(store);
+	return (line);
+}
+
+#include "stdio.h"
+#include "fcntl.h"
+
+int	main(void)
+{
+	int		fd;
+	char	*line;
+
+	fd = open("tests.txt", 0_RONLY);
+	while ((line = get_next_line(fd)))
+	{
+		printf("res = %s", line);
+		free(line);
+	}
+}
