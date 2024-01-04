@@ -6,13 +6,11 @@
 /*   By: elichan < elichan@student.42.fr >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 11:52:03 by elichan           #+#    #+#             */
-/*   Updated: 2023/12/29 12:46:51 by elichan          ###   ########.fr       */
+/*   Updated: 2024/01/04 14:49:39 by elichan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "stdio.h"
-#include "fcntl.h"
 
 char	*get_line(char *store)
 {
@@ -75,9 +73,9 @@ char	*free_stash(char *store)
 	while (store[i])
 	{
 		new_stash[j++] = store[i++];
-		new_stash[j] = '\0';
-		free(store);
 	}
+	new_stash[j] = '\0';
+	free(store);
 	return (new_stash);
 }
 
@@ -96,15 +94,20 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
+#include <fcntl.h>
+#include <stdio.h>
+
 int	main(void)
 {
-	int		fd;
-	char	*line;
+	int			fd;
+	char		*line;
 
 	fd = open("tests.txt", O_RDONLY);
-	if (line = get_next_line(fd))
+	while ((line = get_next_line(fd)))
 	{
-		printf("res = %s", line);
+		printf("%s\n", line);
 		free(line);
 	}
+	close(fd);
+	free(line);
 }

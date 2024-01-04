@@ -6,7 +6,7 @@
 /*   By: elichan < elichan@student.42.fr >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 11:58:17 by elichan           #+#    #+#             */
-/*   Updated: 2023/12/29 14:48:48 by elichan          ###   ########.fr       */
+/*   Updated: 2024/01/04 12:37:52 by elichan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_strchr(const char *store, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(const char *store, char *buff)
+char	*ft_strjoin(char *store, char *buff)
 {
 	char	*dest;
 	size_t	i;
@@ -59,7 +59,7 @@ char	*ft_strjoin(const char *store, char *buff)
 		store = malloc(sizeof(char) * 1);
 		if (!store)
 			return (NULL);
-		store[i] = '\0';
+		store[0] = '\0';
 	}
 	if (!buff)
 		return (NULL);
