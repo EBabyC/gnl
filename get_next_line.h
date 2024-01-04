@@ -35,5 +35,6 @@ char	*ft_strchr(const char *store, int c);
 char	*ft_strjoin(const char *store, char *buff);
 size_t	ft_strlen(const char *s);
 size_t	ft_line_len(char *line);
+void	str_cpy(char *line, char *store);
 
 #endif

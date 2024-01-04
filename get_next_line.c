@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "stdio.h"
+#include "fcntl.h"
 
 char	*get_line(char *store)
 {
@@ -94,16 +96,13 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-#include "stdio.h"
-#include "fcntl.h"
-
 int	main(void)
 {
 	int		fd;
 	char	*line;
 
-	fd = open("tests.txt", 0_RONLY);
-	while ((line = get_next_line(fd)))
+	fd = open("tests.txt", O_RDONLY);
+	if (line = get_next_line(fd))
 	{
 		printf("res = %s", line);
 		free(line);
