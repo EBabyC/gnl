@@ -6,13 +6,14 @@
 /*   By: elichan < elichan@student.42.fr >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 11:58:17 by elichan           #+#    #+#             */
-/*   Updated: 2024/01/04 12:37:52 by elichan          ###   ########.fr       */
+/*   Updated: 2024/01/09 13:40:02 by elichan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*Strlen returns the lenght of the string (without '\0')
-strchr checks the string until it finds the 1st '\0', returns a pointer to
-the end of ths string */
+//Functions used in the implemetation of GNL
+//Strlen returns the lenght of the string (without '\0')
+//strchr checks string until finds the 1st '\0' returns a ptr to end of str
+//stjoin concatenate store & buff
 
 #include "get_next_line.h"
 
@@ -41,7 +42,7 @@ char	*ft_strchr(const char *store, int c)
 	{
 		if (store[i] == (char)c)
 			return ((char *)&store[i]);
-			i++;
+		i++;
 	}
 	return (NULL);
 }

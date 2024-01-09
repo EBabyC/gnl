@@ -6,7 +6,7 @@
 /*   By: elichan < elichan@student.42.fr >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 11:52:03 by elichan           #+#    #+#             */
-/*   Updated: 2024/01/04 14:49:39 by elichan          ###   ########.fr       */
+/*   Updated: 2024/01/09 13:51:04 by elichan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-#include <fcntl.h>
-#include <stdio.h>
+/*#include <fcntl.h>
 
 int	main(void)
 {
@@ -110,4 +109,4 @@ int	main(void)
 	}
 	close(fd);
 	free(line);
-}
+}*/
