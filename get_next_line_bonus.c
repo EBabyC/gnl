@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elichan < elichan@student.42.fr >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/21 11:52:03 by elichan           #+#    #+#             */
-/*   Updated: 2024/01/11 12:59:57 by elichan          ###   ########.fr       */
+/*   Created: 2024/01/04 13:06:39 by elichan           #+#    #+#             */
+/*   Updated: 2024/01/11 14:28:21 by elichan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_line(char *store)
 {
-	int			i;
-	char		*line;
+	int		i;
+	char	*line;
 
 	i = 0;
 	if (!store[i])
@@ -41,13 +41,13 @@ char	*read_and_join(int fd, char *store)
 		reading_idx = read(fd, buff, BUFFER_SIZE);
 		if (reading_idx == -1)
 		{
-			free (buff);
+			free(buff);
 			return (NULL);
 		}
 		buff[reading_idx] = '\0';
 		store = ft_strjoin(store, buff);
 	}
-	free (buff);
+	free(buff);
 	return (store);
 }
 
@@ -71,9 +71,7 @@ char	*free_stash(char *store)
 	i++;
 	j = 0;
 	while (store[i])
-	{
 		new_stash[j++] = store[i++];
-	}
 	new_stash[j] = '\0';
 	free(store);
 	return (new_stash);
@@ -82,31 +80,30 @@ char	*free_stash(char *store)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*store;
+	static char	*store[900];
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 899)
 		return (NULL);
-	store = read_and_join(fd, store);
-	if (!store)
+	store[fd] = read_and_join(fd, store[fd]);
+	if (!store[fd])
 		return (NULL);
-	line = get_line(store);
-	store = free_stash(store);
+	line = get_line(store[fd]);
+	store[fd] = free_stash(store[fd]);
 	return (line);
 }
 
-/*#include <fcntl.h>
-
-int	main(void)
+/*
+#include "stdio.h"
+#include "fcntl.h"
+int main()
 {
-	int			fd;
-	char		*line;
+	int    fd;
+	char *line;
 
-	fd = open("tests.txt", O_RDONLY);
+	fd = open("testfile", O_RDONLY);
 	while ((line = get_next_line(fd)))
 	{
 		printf("%s", line);
 		free(line);
 	}
-	close(fd);
-	free(line);
 }*/
