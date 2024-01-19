@@ -6,7 +6,7 @@
 /*   By: elichan < elichan@student.42.fr >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 13:06:39 by elichan           #+#    #+#             */
-/*   Updated: 2024/01/11 14:28:21 by elichan          ###   ########.fr       */
+/*   Updated: 2024/01/15 12:33:41 by elichan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,7 @@ char	*get_next_line(int fd)
 	store[fd] = free_stash(store[fd]);
 	return (line);
 }
-
 /*
-#include "stdio.h"
-#include "fcntl.h"
 int main()
 {
 	int    fd;
@@ -106,4 +103,5 @@ int main()
 		printf("%s", line);
 		free(line);
 	}
-}*/
+}
+*/

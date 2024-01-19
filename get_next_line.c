@@ -6,7 +6,7 @@
 /*   By: elichan < elichan@student.42.fr >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 11:52:03 by elichan           #+#    #+#             */
-/*   Updated: 2024/01/11 12:59:57 by elichan          ###   ########.fr       */
+/*   Updated: 2024/01/15 12:21:19 by elichan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,18 +84,21 @@ char	*get_next_line(int fd)
 	char		*line;
 	static char	*store;
 
+	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	store = read_and_join(fd, store);
-	if (!store)
+	if (!store || store[0] == 0)
+	{
+		free(store);
+		store = NULL;
 		return (NULL);
+	}
 	line = get_line(store);
 	store = free_stash(store);
 	return (line);
 }
-
-/*#include <fcntl.h>
-
+/*
 int	main(void)
 {
 	int			fd;
@@ -109,4 +112,5 @@ int	main(void)
 	}
 	close(fd);
 	free(line);
-}*/
+}
+*/
