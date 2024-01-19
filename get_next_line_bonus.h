@@ -6,7 +6,7 @@
 /*   By: elichan < elichan@student.42.fr >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:48:34 by elichan           #+#    #+#             */
-/*   Updated: 2024/01/09 13:50:30 by elichan          ###   ########.fr       */
+/*   Updated: 2024/01/15 14:40:34 by elichan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,8 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *store, char *buff);
 size_t	ft_strlen(const char *s);
 size_t	ft_line_len(char *line);
+char	*get_line(char *store);
+char	*read_and_join(int fd, char *store);
+char	*free_stash(char *store);
 
 #endif

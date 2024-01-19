@@ -6,10 +6,11 @@
 /*   By: elichan < elichan@student.42.fr >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 11:52:03 by elichan           #+#    #+#             */
-/*   Updated: 2024/01/15 12:21:19 by elichan          ###   ########.fr       */
+/*   Updated: 2024/01/18 12:56:07 by elichan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//getline extracts line of store & allocates mem to store, copies
 #include "get_next_line.h"
 
 char	*get_line(char *store)

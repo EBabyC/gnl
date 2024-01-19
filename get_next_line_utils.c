@@ -6,14 +6,16 @@
 /*   By: elichan < elichan@student.42.fr >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 11:58:17 by elichan           #+#    #+#             */
-/*   Updated: 2024/01/09 13:40:02 by elichan          ###   ########.fr       */
+/*   Updated: 2024/01/15 14:50:21 by elichan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //Functions used in the implemetation of GNL
 //Strlen returns the lenght of the string (without '\0')
-//strchr checks string until finds the 1st '\0' returns a ptr to end of str
-//stjoin concatenate store & buff
+//chr checks string until finds the 1st '\0' returns a ptr to end of str
+//join concatenate store&buff, returns total, manages needed mem for new str
+//cpy part of store ini line until \n or \0
+//linelen returns line lenght until \n or \0
 
 #include "get_next_line.h"
 
